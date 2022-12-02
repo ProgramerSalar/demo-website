@@ -1,10 +1,18 @@
 const express = require("express")
-
+const hbs = require("hbs")
 const app = express()
 
-app.get("/" , (req , res)=>{
-    res.send("waw this is server")
-})
+const routes = require('./routes/main')
+
+app.use('/user' , routes)
+
+
+// template engine 
+app.set('view engine', 'hbs')
+app.set("views" , "views")
+
+
+
 
 app.listen(process.env.PORT | 5556 , ()=> {
     console.log("server listening on")
